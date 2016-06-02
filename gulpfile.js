@@ -31,30 +31,12 @@ var config = {
 	]
  };
 
-// Minifies and renames own css files
-gulp.task('styles', function() {
-	return gulp.src(config.css)
-	.pipe(cleanCSS())
-	.pipe(rename({ suffix: '.min' }))
-	.pipe(chmod(644))
-	.pipe(gulp.dest(path.dist + 'css/'))
-	;
-});
-
-// Minify and rename own JS files
-gulp.task('scripts', function() {
-	return gulp.src(config.js)
-	.pipe(gulpIf('js/*.js', uglify()))
-	.pipe(rename({ suffix: '.min' }))
-	.pipe(chmod(644))
-	.pipe(gulp.dest(path.dist + '/js'))
-	;
-});
-
 gulp.task('useref', function(){
   return gulp.src(config.html)
 	.pipe(useref())
-	.pipe(chmod(644))
+    .pipe(gulpIf('*.js', uglify()))
+    .pipe(gulpIf('*.css', cleanCSS()))
+    .pipe(chmod(644))
 	.pipe(gulp.dest(path.dist))
 });
 
@@ -67,7 +49,7 @@ gulp.task('images', function(){
 	.pipe(gulp.dest(path.dist + 'img/'))
 });
 
-gulp.task('build', ['useref', 'images', 'scripts', 'styles' ], function (){
+gulp.task('build', ['useref', 'images' ], function (){
   console.log('Building files');
 });
 
