@@ -46,13 +46,17 @@ function User(name){
    this.userName = name;
    this.isLoggedIn = false;
    this.socket = null;
+   this.discussion = null;
 
    User.instance = this;
    
    this.logIn= function () {
 		// Log In user and create WebSocket connection using socket.js
 	   this.socket = new Socket(this.userName);
-	   
+
+	   //Create new discussion
+	   this.discussion = new Discussion("My chat", this.userName);
+
 	   this.isLoggedIn = true;
    }
 
@@ -74,15 +78,14 @@ function User(name){
 	}
    
    this.say= function (msg) {
-		// Send user message to WebSocket
+		// Send user message to WebSocket and Discussion
 	   this.socket.send(msg);
-		$("#chatParagraph").append( "<p>" + this.userName + " > " + msg + "</p>");
-		   // TODO handle message and update chat window
+	   this.discussion.response(msg);
 
 	}
    this.hear= function (msg) {
-		// User received message from WebSocket
-		$("#chatParagraph").append( "<p>" + msg.sender + " > " + msg.message + "</p>");
+		// User received message from WebSocket, so send it to Discussion
+	   this.discussion.comment(msg);
 	}
 
 

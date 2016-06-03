@@ -50,5 +50,7 @@ $( document ).ready(function() {
 		//Clear logout link from navbar and trigger login modal
     	$("#userName").html("");
 		$("#loginModal").modal()
-	});	
+	});
+	
+	//TODO Add support to send message with enter 
 });
