@@ -30,8 +30,8 @@ function Socket(userName) {
 
 	var connected = false;
 	// username needs to be URI encoded
-	var name = encodeURI(userName);
-	var connection = new WebSocket('ws://codingtest.meedoc.com/ws?username=' + name);
+	var name = userName;
+	var connection = new WebSocket('ws://codingtest.meedoc.com/ws?username=' + encodeURI(name));
 
 	connection.onopen = function(){
 		/*Send a small message to the console once the connection is established */
@@ -54,9 +54,17 @@ function Socket(userName) {
 	}
 
 	connection.onmessage = function(e){
-	   var server_message = e.data;
-	   console.log(server_message);
-	   // TODO handle message and update chat window
+		var server_message = e.data;
+		var messageObj;
+		// Create new user with name. If user already exists, a reference to that is returned.
+		var user = new User(name);
+		
+		console.log(server_message);
+
+		//Parse received message and send it user
+		messageObj = jQuery.parseJSON( server_message );
+		user.hear(messageObj);
+	   
 	}
 
 	this.close = function () {
@@ -68,8 +76,9 @@ function Socket(userName) {
 
 	this.send = function(msg) {
 		// Send message to socket if connection is active
-		if (connected)
+		if (connected) {
 			connection.send(msg);
+		}
 	}
 
 };

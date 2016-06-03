@@ -25,6 +25,14 @@
  *             parameters
  *                 -
  *
+ *         say(msg) - Sends message to socket
+ *             parameters
+ *                 msg - Text string to send
+ *
+ *         hear(msgObj) - Socket received a message and informs user
+ *             parameters
+ *                 messageObj - Message from socket as JSON
+ *
  *
  */
 
@@ -65,6 +73,19 @@ function User(name){
 	   return this.userName;
 	}
    
+   this.say= function (msg) {
+		// Send user message to WebSocket
+	   this.socket.send(msg);
+		$("#chatParagraph").append( "<p>" + this.userName + " > " + msg + "</p>");
+		   // TODO handle message and update chat window
+
+	}
+   this.hear= function (msg) {
+		// User received message from WebSocket
+		$("#chatParagraph").append( "<p>" + msg.sender + " > " + msg.message + "</p>");
+	}
+
+
    return this;
 }
 

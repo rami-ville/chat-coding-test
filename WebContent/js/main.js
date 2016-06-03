@@ -4,14 +4,14 @@ $( document ).ready(function() {
 
 	if (user == null) {
 		// login modal on page load
-		$("#loginModal").modal()
+		$("#loginModal").modal();
 		}
 
 
 	$('#loginModal').on('shown.bs.modal', function () {
 		
 		// set focus to user name text box
-		$('#loginUserName').focus()
+		$('#loginUserName').focus();
 	})
 
 	$('#btnLogin').click(function(event){
@@ -26,8 +26,19 @@ $( document ).ready(function() {
 		$("#userName").html('<i class="fa fa-sign-out" aria-hidden="true"></i>Log out ' + user.getName());
 
 		//Hide login modal
-		$("#loginModal").modal('hide')
+		$("#loginModal").modal('hide');
 
+	});
+
+	$('#btnSend').click(function(event){
+		event.preventDefault();
+
+	    // Send message
+		user.say( $("#inputChatMessage").val() );
+
+		//Clear message away and set focus to input
+		$("#inputChatMessage").val("");
+	    $('#inputChatMessage').focus()
 	});
 	
 	$('#userName').click(function(event){
@@ -39,6 +50,5 @@ $( document ).ready(function() {
 		//Clear logout link from navbar and trigger login modal
     	$("#userName").html("");
 		$("#loginModal").modal()
-	});
-	
+	});	
 });
