@@ -26,45 +26,44 @@
  *
  */
 
-function Socket(userName) {
+function Socket(userObj) {
 
 	var connected = false;
 	// username needs to be URI encoded
-	var name = userName;
-	var connection = new WebSocket('ws://codingtest.meedoc.com/ws?username=' + encodeURI(name));
+	var user = userObj;
+	var connection = new WebSocket('ws://codingtest.meedoc.com/ws?username=' + encodeURI(user.getName()));
 
 	connection.onopen = function(){
 		/*Send a small message to the console once the connection is established */
 		console.log('Connection open!');
 		connected = true;
-   		// TODO implement update to user.js that connection is created and user really connected
+		// Inform user that connection is created and user really connected
+		user.connected();
 	}
 
 	connection.onerror= function(){
 		/*Send a small message to the console on the connection error */
 		console.log('Connection error!');
-   		connected = false;
+		connected = false;
 	}
 
 	connection.onclose= function(){
 		/*Send a small message to the console once the connection is closed */
 		console.log('Connection close!');
-   		connected = false;
-   		// TODO implement update to user.js that connection is closed
+		connected = false;
+		// Inform user that user that connection is closed
+		user.disconnected();
 	}
 
 	connection.onmessage = function(e){
 		var server_message = e.data;
 		var messageObj;
-		// Create new user with name. If user already exists, a reference to that is returned.
-		var user = new User(name);
-		
+
 		console.log(server_message);
 
 		//Parse received message and send it user
 		messageObj = jQuery.parseJSON( server_message );
 		user.hear(messageObj);
-	   
 	}
 
 	this.close = function () {
@@ -80,6 +79,4 @@ function Socket(userName) {
 			connection.send(msg);
 		}
 	}
-
 };
-
