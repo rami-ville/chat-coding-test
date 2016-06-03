@@ -58,6 +58,13 @@ $( document ).ready(function() {
     	$("#userName").html("");
 		$("#loginModal").modal()
 	});
-	
-	//TODO Add support to send message with enter 
+
+	// Handle enter key and send chat message
+	$(document).keypress(function(e) {
+	    if(e.which === 13 && $("#inputChatMessage").is(":focus") && $("#inputChatMessage").val() != "") {
+	        // enter has been pressed, focus is in chat input and there is text, so execute a click on btnSend
+	        $("#btnSend").click();
+	    }
+	});
+
 });
