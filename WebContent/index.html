@@ -41,27 +41,33 @@
 			</div>
 		</nav>
 
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
-					<h1 id="chatTitle">Received chat-messages:</h1>
-					<div id="chatParagraph"></div> <!-- TODO Change to chat window  -->
-				</div>
-				<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
-					<div class="input-group">
-						<label class="sr-only" for="inputChatMessage">
-							Enter message
-						</label>
-						<input id="inputChatMessage" type="text" name="message" class="form-control text-width-30em"/>
-						<span class="input-group-btn">
-						<button id="btnSend" class="btn btn-primary" type="button"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> Send</button>
-						</span>
+		<div class="container set-screen-height">
+			<div class="row set-screen-height-full">
+				<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6  set-screen-height-full">
+					<div class="panel panel-default set-screen-height-full">
+						<!-- Default panel contents -->
+						<div class="panel-heading">
+							<h1 id="chatTitle">Received chat-messages:</h1>
+						</div>
+						<div id="chatParagraph" class="panel-body fixed-panel">
+						</div>
+						<div class="panel-footer">
+							<div class="input-group">
+								<label class="sr-only" for="inputChatMessage">
+									Enter message
+								</label>
+								<input id="inputChatMessage" type="text" name="message" class="form-control text-width-30em"/>
+								<span class="input-group-btn">
+								<button id="btnSend" class="btn btn-primary" type="button"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> Send</button>
+								</span>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 			<div class="row">
 				<div id="contact" class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
-					<p class="lead">Contact - Change this</p> <!-- TODO Change to contact window  -->
+					<p class="lead"></p> <!-- TODO Change to contact window  -->
 				</div>
 			</div>
 		</div><!-- /.container -->

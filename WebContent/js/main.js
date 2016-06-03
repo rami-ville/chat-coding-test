@@ -7,11 +7,18 @@ $( document ).ready(function() {
 		$("#loginModal").modal();
 		}
 
-
+	// When login modal is shown, set focus to user name text box
 	$('#loginModal').on('shown.bs.modal', function () {
-		
+
 		// set focus to user name text box
 		$('#loginUserName').focus();
+	})
+
+	// When login modal is hidden, set focus to chat input box
+	$('#loginModal').on('hidden.bs.modal', function () {
+
+		// set focus to user name text box
+		$('#inputChatMessage').focus();
 	})
 
 	$('#btnLogin').click(function(event){

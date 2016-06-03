@@ -1,10 +1,10 @@
 
+html,body{height:100%;margin:0;padding:0}
 
 /* navbar-fixed-top takes 50px from top */
 body {
 	padding-top: 70px;
 }
-
 
 /* Center modal to the screen height */
 .modal {
@@ -26,4 +26,55 @@ body {
   vertical-align: middle;
 }
 
- 
+/* CREATE  BUBBLES FOR COMMENTS AND NAME*/
+
+p.chat-message {
+  position: relative;
+  line-height: 2em;
+  text-align: center;
+  background-color: #fff;
+  border: 8px solid #666;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+  -webkit-box-shadow: 2px 2px 4px #888;
+  -moz-box-shadow: 2px 2px 4px #888;
+  box-shadow: 2px 2px 4px #888;
+}
+
+p.chat-name {
+  position: relative;
+  text-align: center;
+  line-height: 2em;
+  background-color: #fff;
+  border: 2px solid #666;
+  -webkit-border-radius: 58px;
+  -moz-border-radius: 58px;
+  border-radius: 58px;
+  -webkit-box-shadow: 2px 2px 4px #888;
+  -moz-box-shadow: 2px 2px 4px #888;
+  box-shadow: 2px 2px 4px #888;
+  padding: 1px;
+}
+
+p.chat-sign {
+  position: relative;
+  width: 3em;
+  height: 3em;
+  text-align: center;
+  line-height: 2em;
+  padding: 8px;
+}
+
+/* classes to adjust chat panel height */
+.set-screen-height {
+  height: 70%;
+}
+.set-screen-height-full {
+  height: 100%;
+}
+.fixed-panel {
+  height: 80%;
+  min-height: 80%;
+  overflow-y: scroll;
+}

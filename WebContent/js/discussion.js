@@ -29,12 +29,11 @@ function Discussion(title, name) {
 
 	this.comment = function(msg){
 		// Add received message to chatParagraph
-		$("#chatParagraph").append( "<p>" + msg.sender + " > " + msg.message + "</p>");
+		$("#chatParagraph").append( '<div class="row"><div class="col-xs-2"><p class="chat-name">' + msg.sender + '</p></div><div class="col-xs-1"><p class="chat-sign"><i class="fa fa-chevron-right fa-2x" aria-hidden="true"></i></p></div><div class="col-xs-6"><p class="chat-message">' + msg.message + '</p></div></div></div>');
 	}
 
 	this.response = function(msg){
 		// Add send message to chatParagraph
-		$("#chatParagraph").append( "<p>" + this.name + " > " + msg + "</p>");
-	   // TODO handle message and update chat window
+		$("#chatParagraph").append( '<div class="row"><div class="col-xs-offset-3 col-xs-6"><p class="chat-message">' + msg + '</p></div><div class="col-xs-1"><p class="chat-sign"><i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i></p></div><div class="col-xs-2"><p class="chat-name">' + this.name + '</p></div></div></div>');
 	}
 }
