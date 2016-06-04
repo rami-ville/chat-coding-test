@@ -30,6 +30,7 @@ Needed npm modules are:
 * gulp-clean-css
 * gulp-useref
 * gulp-uglify
+* gulp-imagemin
 * gulp-if
 * gulp-chmod
 

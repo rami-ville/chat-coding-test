@@ -26,6 +26,18 @@ body {
   vertical-align: middle;
 }
 
+/* CSS FOR LOGIN MODAL LOGO IMAGE */
+#loginModalLabel > img {
+	max-height: 100%;
+	margin-top:-15px;
+	margin-bottom:-15px;
+}
+
+/* CSS FOR NAVBAR BRAND IMAGE */
+a.navbar-brand img {
+	max-height: 100%;
+	}
+
 /* CREATE  BUBBLES FOR COMMENTS AND NAME*/
 
 p.chat-message {

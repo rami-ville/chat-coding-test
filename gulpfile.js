@@ -28,6 +28,9 @@ var config = {
 	],
 	js:[
 		'WebContent/js/*.js'
+	],
+	images:[
+		'WebContent/img/'
 	]
  };
 
@@ -41,7 +44,7 @@ gulp.task('useref', function(){
 });
 
 gulp.task('images', function(){
-	return gulp.src('img/**/*.+(png|jpg|gif|svg)')
+	return gulp.src(config.images + '**/*.+(png|jpg|gif|svg)')
 	.pipe(imagemin({
       progressive: true
     }))
