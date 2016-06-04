@@ -30,7 +30,7 @@ $( document ).ready(function() {
 		user.logIn();
 		
 		//Set logout link to navbar
-		$("#userName").html('<i class="fa fa-sign-out" aria-hidden="true"></i>Log out ' + user.getName());
+		$("#userName").html('<i class="fa fa-sign-out fa-lg" aria-hidden="true"></i>Log out ' + user.getName());
 
 		//Hide login modal
 		$("#loginModal").modal('hide');
