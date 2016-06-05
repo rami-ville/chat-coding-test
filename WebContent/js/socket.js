@@ -34,22 +34,19 @@ function Socket(userObj) {
 	var connection = new WebSocket('ws://codingtest.meedoc.com/ws?username=' + encodeURI(user.getName()));
 
 	connection.onopen = function(){
-		/*Send a small message to the console once the connection is established */
-		console.log('Connection open!');
+		/* Set connected true once the connection is established */
 		connected = true;
 		// Inform user that connection is created and user really connected
 		user.connected();
 	}
 
 	connection.onerror= function(){
-		/*Send a small message to the console on the connection error */
-		console.log('Connection error!');
+		/* Set connected false on the connection error */
 		connected = false;
 	}
 
 	connection.onclose= function(){
-		/*Send a small message to the console once the connection is closed */
-		console.log('Connection close!');
+		/* Set connected false once the connection is closed */
 		connected = false;
 		// Inform user that user that connection is closed
 		user.disconnected();
@@ -58,8 +55,6 @@ function Socket(userObj) {
 	connection.onmessage = function(e){
 		var server_message = e.data;
 		var messageObj;
-
-		console.log(server_message);
 
 		//Parse received message and send it user
 		messageObj = jQuery.parseJSON( server_message );
